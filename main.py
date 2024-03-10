@@ -2,12 +2,12 @@ import requests as r
 from bs4 import BeautifulSoup
 
 def fetch_html(url):
-    '''Fetch HTML content.'''
+    """Fetch HTML content."""
     resp = r.get(url)
     return resp.content
 
 def parse_html_for_price_info(html_content):
-    '''Gets Price Information from the HTML content.'''
+    """Gets Price Information from the HTML content."""
     soup = BeautifulSoup(html_content, 'html.parser')
     # we want to target the div that has the data we want. which is 'data-last-price'
     # get the first div that has the data-last-price attribute. True means, this attribute is set to some value.
