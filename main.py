@@ -3,6 +3,24 @@ from bs4 import BeautifulSoup
 from dataclasses import dataclass
 from tabulate import tabulate
 from datetime import datetime
+import sqlite3
+import json
+
+conn = sqlite3.connect('positions.db')
+c = conn.cursor()
+
+c.execute('''
+CREATE TABLE IF NOT EXISTS positions(
+          id INTEGER PRIMARY KEY,
+          ticker TEXT,
+          exchange TEXT,
+          currency TEXT,
+          quantity INTEGER,
+          usd_price FLOAT,
+          total_usd_price FLOAT,
+          precentage FLOAT,
+          date INTEGER
+)''')
 
 @dataclass
 class Stock:
@@ -85,7 +103,8 @@ def display_portfolio_summary(portfolio):
     position_data = []
 
     for position in portfolio.positions:
-        position_data.append([
+
+        data = [
             position.stock.ticker,
             position.stock.exchange,
             position.stock.currency,
@@ -93,9 +112,16 @@ def display_portfolio_summary(portfolio):
             position.stock.usd_price,
             position.stock.usd_price * position.quantity,
             100*position.stock.usd_price * position.quantity/portfolio_value,
-            datetime.fromtimestamp(position.stock.timestamp)
-            
-        ])
+            position.stock.timestamp
+        ]
+
+        position_data.append(data)
+
+        # save data to the database.
+        c.execute('''INSERT INTO positions (ticker, exchange, currency, quantity, usd_price, total_usd_price, precentage, date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)''', 
+                  (data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]))
+    conn.commit()
+    conn.close()
 
     print(tabulate(position_data, 
                    headers=['Ticker', 'Exchange', 'Currency', 'Quantity', 'USD price', 'Total USD Value', '% of Portfolio', 'Time'], 
@@ -104,6 +130,7 @@ def display_portfolio_summary(portfolio):
                    ))
     
     print('Total Portfolio: ', portfolio_value)
+
 
 
 if __name__ == '__main__':    
@@ -115,5 +142,5 @@ if __name__ == '__main__':
     tesla = Stock('TSLA', 'NASDAQ')    
 
     portfolio = Portfolio([Position(shop, 10), Position(google, 20), Position(apple, 20), Position(tesla, 10), Position(msft, 23), Position(baba, 9)])
-#    
+    
     display_portfolio_summary(portfolio)
