@@ -11,8 +11,8 @@ A simple scraping project that scrapes real-time stock data from Google Finance 
 ![Alt text](image.png)
 
 # Future Work
-The initial scope for the project was to practice web-scraping and database modelling, so I stopped the project after that was done. However, to take this project futher, we could:
+The initial scope for the project was to practice web-scraping and database modeling, so I stopped the project after that was done. However, to take this project further, we could:
 
-- Create a frontend using Flask or Streamlit that allows users to add and remove stocks to their portfolios.
-- Using the data stored to create a timeseries for the portfolio to allow users to analyse how there portfolio has changed over time. This is possible because timeseries data is stored in the database, so we can use modules like ploty or matplotlib to create timeseries plots.
+- Create a frontend using Flask or Streamlit that allows users to add and remove stocks from their portfolios.
+- Use the data stored to create a timeseries for the portfolio to allow users to analyze how their portfolio has changed over time. This is possible because timeseries data is stored in the database, so we can use modules like Plotly or Matplotlib to create timeseries plots.
 - Include error handling and better user feedback.
