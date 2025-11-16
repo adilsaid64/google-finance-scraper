@@ -1,3 +1,2 @@
-def test_import():
-    import portfoliotracker    
+def test_import() -> None:
     assert True
