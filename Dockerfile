@@ -6,4 +6,4 @@ COPY . /app
 
 RUN uv sync
 
-CMD ["uv", "run", "-m", "portfoliotracker"]
+CMD ["uv", "run", "exmaples/quickstart.py"]
