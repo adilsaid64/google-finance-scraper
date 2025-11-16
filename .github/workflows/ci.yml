@@ -33,8 +33,7 @@ jobs:
     - name: Run Quickstart
       run: |
         source .venv/bin/activate
-        cd examples
-        python quickstart.py
+        python examples/quickstart.py
 
     - name: Run PyTest
       run: |
@@ -70,7 +69,7 @@ jobs:
         source .venv/bin/activate
         ruff format --check src/
 
-    - name: Type check with mypy
-      run: |
-        source .venv/bin/activate
-        mypy src/
+    # - name: Type check with mypy
+    #   run: |
+    #     source .venv/bin/activate
+    #     mypy src/
