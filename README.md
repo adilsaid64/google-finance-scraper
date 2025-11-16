@@ -34,6 +34,8 @@ portfolio = Portfolio(
 display_portfolio_summary(portfolio)
 ```
 
+![alt text](image.png)
+
 ## License
 
 Apache-2.0 License.
