@@ -19,7 +19,7 @@ repos:
     rev: v1.7.1
     hooks:
       - id: mypy
-        additional_dependencies: [types-requests]
+        additional_dependencies: [types-requests, types-tabulate]
         args: [--ignore-missing-imports]
 
 exclude: |

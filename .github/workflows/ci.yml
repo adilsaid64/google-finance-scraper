@@ -69,7 +69,7 @@ jobs:
       run: |
         source .venv/bin/activate
         ruff format --check src/
-    
+
     - name: Type check with mypy
       run: |
         source .venv/bin/activate
