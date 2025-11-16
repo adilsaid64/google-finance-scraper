@@ -1,0 +1,8 @@
+include README.md
+include LICENSE
+include CHANGELOG.md
+include pyproject.toml
+recursive-include src *.py
+recursive-include examples *.csv *.py
+global-exclude __pycache__
+global-exclude *.py[co]

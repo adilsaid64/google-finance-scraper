@@ -1,0 +1,111 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "PortfolioTracker"
+description = "A portfolio tracking project that tracks your portfolio"
+readme = "README.md"
+license = "Apache-2.0"
+authors = [
+    {name = "Adil Said", email = "adilsaid64@gmail.com"}
+]
+maintainers = [
+    {name = "Adil Said", email = "adilsaid64@gmail.com"}
+]
+keywords = ["template", "python", "project"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "beautifulsoup4>=4.14.2",
+    "jinja2>=3.1",
+    "pre-commit>=4.3.0",
+    "tabulate>=0.9.0",
+]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/adilsaid64/portfoliotracker"
+Documentation = "https://github.com/adilsaid64/portfoliotracker#readme"
+Repository = "https://github.com/adilsaid64/portfoliotracker.git"
+Issues = "https://github.com/adilsaid64/portfoliotracker/issues"
+Changelog = "https://github.com/adilsaid64/portfoliotracker/blob/main/CHANGELOG.md"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "ruff>=0.1.6",
+    "mypy>=1.0",
+    "pre-commit>=3.0",
+    "python-semantic-release>=8.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.setuptools.dynamic]
+version = {attr = "portfoliotracker.__version__"}
+
+[tool.semantic_release]
+version_toml = ["pyproject.toml:project.version"]
+version_variables = ["src/portfoliotracker/__init__.py:__version__"]
+upload_to_vcs_release = true
+
+[tool.semantic_release.branches.main]
+match = "main"
+prerelease = false
+
+
+[tool.semantic_release.remote]
+name = "origin"
+type = "github"
+
+[tool.ruff]
+target-version = "py39"
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "UP", # pyupgrade
+]
+ignore = [
+    "E501",  # line too long, handled by formatter
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.ruff.lint.isort]
+known-first-party = ["portfoliotracker"]
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+show_error_codes = true
