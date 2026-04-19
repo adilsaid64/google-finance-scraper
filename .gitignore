@@ -55,6 +55,9 @@ cover/
 *.mo
 *.pot
 
+# Local app data (portfolio snapshots)
+positions.db
+
 # Django stuff:
 *.log
 local_settings.py

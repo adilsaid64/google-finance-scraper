@@ -1,0 +1,10 @@
+{
+  "positions": [
+    { "ticker": "SHOP", "exchange": "TSE", "quantity": 10 },
+    { "ticker": "GOOGL", "exchange": "NASDAQ", "quantity": 20 },
+    { "ticker": "MSFT", "exchange": "NASDAQ", "quantity": 23 },
+    { "ticker": "BABA", "exchange": "NYSE", "quantity": 9 },
+    { "ticker": "AAPL", "exchange": "NASDAQ", "quantity": 20 },
+    { "ticker": "TSLA", "exchange": "NASDAQ", "quantity": 10 }
+  ]
+}
