@@ -13,7 +13,7 @@ from portfoliotracker.domain.models import (
 )
 from portfoliotracker.ports.quote_provider import QuoteProvider
 
-__version__ = "1.0.3"
+__version__ = "1.1.0"
 
 # Backward-compatible alias: previously `Stock(ticker, exchange)` triggered fetch.
 Stock = StockRef
